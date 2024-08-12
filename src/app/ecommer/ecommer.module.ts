@@ -8,6 +8,8 @@ import { EcommerPageComponent } from './pages/ecommer-page/ecommer-page.componen
 import { FooterComponent } from './shared/footer/footer.component';
 import { ContactPageComponent } from './pages/contact-page/contact-page.component';
 import { AboutPageComponent } from './pages/about-page/about-page.component';
+import { CardComponent } from './components/card/card.component';
+import { CarouselComponent } from './components/carousel/carousel.component';
 
 
 @NgModule({
@@ -17,7 +19,9 @@ import { AboutPageComponent } from './pages/about-page/about-page.component';
     EcommerPageComponent,
     FooterComponent,
     ContactPageComponent,
-    AboutPageComponent
+    AboutPageComponent,
+    CardComponent,
+    CarouselComponent
   ],
   imports: [
     CommonModule,
