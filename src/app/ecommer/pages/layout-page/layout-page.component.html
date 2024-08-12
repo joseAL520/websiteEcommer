@@ -1,4 +1,21 @@
-<app-menu></app-menu>
-<p>layout-page works!</p>
+
+<div class="container_menu">
+
+    <div class="container_logo">
+        Logo
+    </div>
+
+    <div class="container_nav" *ngFor="let item of sideBarItem">
+        <button class="nav_link" [routerLink]="item.url" >{{item.label}}</button>
+    </div>
+
+    <div class="containe_option">
+        <section>User</section>
+        <section>favoritos</section>
+    </div>
+
+</div>
+
+
 <router-outlet></router-outlet>
 <app-footer></app-footer>

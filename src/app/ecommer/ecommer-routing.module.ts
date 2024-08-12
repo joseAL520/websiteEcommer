@@ -3,6 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { LayoutPageComponent } from './pages/layout-page/layout-page.component';
 import { ProductPageComponent } from './pages/product-page/product-page.component';
 import { EcommerPageComponent } from './pages/ecommer-page/ecommer-page.component';
+import { ContactPageComponent } from './pages/contact-page/contact-page.component';
+import { AboutPageComponent } from './pages/about-page/about-page.component';
 
 const routes: Routes = [
   {
@@ -10,6 +12,8 @@ const routes: Routes = [
     component:LayoutPageComponent,
     children:[
       {path:'eco',component:EcommerPageComponent},
+      {path:'contact',component:ContactPageComponent},
+      {path:'about',component:AboutPageComponent},
       {path:':id',component:ProductPageComponent},
       {path:'**', redirectTo:'eco'},
     ]

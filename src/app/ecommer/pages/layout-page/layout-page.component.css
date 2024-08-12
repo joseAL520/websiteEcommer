@@ -1,0 +1,34 @@
+.container_menu {
+    background-color: #2B2B2B;
+    height: 60px;
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0 20px; 
+}
+
+.container_logo {
+    flex-shrink: 0; 
+}
+
+.container_nav {
+    display: flex; 
+    align-items: center; 
+}
+
+.nav_link {
+    background-color: transparent;
+    border: 0;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 800;
+    border-bottom: solid 2px white;
+    padding: 10px;
+    margin: 0; 
+}
+
+.containe_option {
+    display: flex;
+    gap: 20px;
+}
