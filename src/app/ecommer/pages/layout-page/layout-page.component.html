@@ -8,9 +8,12 @@
         <p class="title_logo">вента</p>
     </div>
 
-    <div class="container_nav" *ngFor="let item of sideBarItem">
-        <button class="nav_link" [routerLink]="item.url" >{{item.label}}</button>
-    </div>
+   <div class="nav_cotainer">
+       <div class="container_nav" *ngFor="let item of sideBarItem">
+           <button class="nav_link" [routerLink]="item.url" >{{item.label}}</button>
+       </div>
+   </div>
+
 
     <div class="containe_option">
         <section>User</section>
