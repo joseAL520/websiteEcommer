@@ -3,10 +3,14 @@
 }
 .container_carusel{
     padding: 20px 0px;
-    background-color: rgba(255, 228, 196, 0.836);
+    background-color: rgba(255, 228, 196, 0.63);
     text-align: center;
 }
 
 .containre_ecommer{
     margin: 20px 50px;
+}
+
+h1 {
+    margin: 10px 0px;
 }
