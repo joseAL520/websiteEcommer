@@ -3,22 +3,27 @@
     height: 80px;
     position: relative;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
     padding: 0 20px; 
 }
 
-.containerLog{
+.nav_cotainer{
+    display: flex;
+    gap: 20px;
+}
+
+.containerLog {
     display: flex;
     flex-direction: row;
     align-items: center;
-    flex-wrap: nowrap;
 }
+
 .container_logo{
     flex-shrink: 0; 
     background-color: white;
     margin: 0px 10px;
-    padding: 10px;
+    padding: 7px;
     border-radius: 50%;
 }
 .container_logo_img{
