@@ -1,262 +1,44 @@
 
 <div class="container">
     
-    <div class="container_card">
+    <div class="container_card" *ngFor="let item of products">
         
       <div class="container_img">
         <img 
-        src="https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+        src="https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg" 
         alt="img"
         >
       </div>
 
         <div class="container_card_info">
             <div class="container_card_title">
-                PRODUCT
+                {{ item.title}}
             </div>
             <div class="contaner_card_pric">
-                <span>$200</span>
+                <span>{{item.price}}</span>
             </div>
         </div>
 
         <div class="container_card_ran">
-            <span class="ranquin">Ranquin (1231)</span>
+                <div class="container_star_rank">
+                    <ng-container *ngFor="let star of getStarRating(item.rank)">
+                        <img *ngIf="star === 'full'" src="https://cdn-icons-png.flaticon.com/512/9715/9715468.png" alt="full star">
+                        <img *ngIf="star === 'half'" src="https://cdn-icons-png.flaticon.com/512/2107/2107737.png" alt="half star">
+                    </ng-container>
+                </div>
+                ({{item.rank}})
+           
         </div>
-
+        
         <div class="contaner_card_action">
-            <button class="buy_product">Comprar</button>
+            <button class="buy_product" (click)="buyProductSelect(item)">Comprar</button>
         </div>
-
-        <button class="add-fav">
+        <button class="add-fav" [class.selected]="item.selected" (click)="onToggleSelect(item)">
             <img class="img_add_fav" src="https://cdn-icons-png.flaticon.com/512/1077/1077035.png" alt="icon">
         </button>
 
     </div>
 
-    <div class="container_card">
-        
-        <div class="container_img">
-          <img 
-          src="https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
-          alt="img"
-          >
-        </div>
-  
-          <div class="container_card_info">
-              <div class="container_card_title">
-                  PRODUCT
-              </div>
-              <div class="contaner_card_pric">
-                  <span>$200</span>
-              </div>
-          </div>
-  
-          <div class="container_card_ran">
-              <span class="ranquin">Ranquin (1231)</span>
-          </div>
-  
-          <div class="contaner_card_action">
-              <button class="buy_product">Comprar</button>
-          </div>
-  
-          <button class="add-fav">
-              <img class="img_add_fav" src="https://cdn-icons-png.flaticon.com/512/1077/1077035.png" alt="icon">
-          </button>
-  
-    </div>
-
-    <div class="container_card">
-        
-        <div class="container_img">
-          <img 
-          src="https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
-          alt="img"
-          >
-        </div>
-  
-          <div class="container_card_info">
-              <div class="container_card_title">
-                  PRODUCT
-              </div>
-              <div class="contaner_card_pric">
-                  <span>$200</span>
-              </div>
-          </div>
-  
-          <div class="container_card_ran">
-              <span class="ranquin">Ranquin (1231)</span>
-          </div>
-  
-          <div class="contaner_card_action">
-              <button class="buy_product">Comprar</button>
-          </div>
-  
-          <button class="add-fav">
-              <img class="img_add_fav" src="https://cdn-icons-png.flaticon.com/512/1077/1077035.png" alt="icon">
-          </button>
-  
-    </div>
-
-    <div class="container_card">
-        
-        <div class="container_img">
-          <img 
-          src="https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
-          alt="img"
-          >
-        </div>
-  
-          <div class="container_card_info">
-              <div class="container_card_title">
-                  PRODUCT
-              </div>
-              <div class="contaner_card_pric">
-                  <span>$200</span>
-              </div>
-          </div>
-  
-          <div class="container_card_ran">
-              <span class="ranquin">Ranquin (1231)</span>
-          </div>
-  
-          <div class="contaner_card_action">
-              <button class="buy_product">Comprar</button>
-          </div>
-  
-          <button class="add-fav">
-              <img class="img_add_fav" src="https://cdn-icons-png.flaticon.com/512/1077/1077035.png" alt="icon">
-          </button>
-  
-    </div>
-
-    <div class="container_card">
-        
-        <div class="container_img">
-          <img 
-          src="https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
-          alt="img"
-          >
-        </div>
-  
-          <div class="container_card_info">
-              <div class="container_card_title">
-                  PRODUCT
-              </div>
-              <div class="contaner_card_pric">
-                  <span>$200</span>
-              </div>
-          </div>
-  
-          <div class="container_card_ran">
-              <span class="ranquin">Ranquin (1231)</span>
-          </div>
-  
-          <div class="contaner_card_action">
-              <button class="buy_product">Comprar</button>
-          </div>
-  
-          <button class="add-fav">
-              <img class="img_add_fav" src="https://cdn-icons-png.flaticon.com/512/1077/1077035.png" alt="icon">
-          </button>
-  
-    </div>
-
-    <div class="container_card">
-        
-        <div class="container_img">
-          <img 
-          src="https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
-          alt="img"
-          >
-        </div>
-  
-          <div class="container_card_info">
-              <div class="container_card_title">
-                  PRODUCT
-              </div>
-              <div class="contaner_card_pric">
-                  <span>$200</span>
-              </div>
-          </div>
-  
-          <div class="container_card_ran">
-              <span class="ranquin">Ranquin (1231)</span>
-          </div>
-  
-          <div class="contaner_card_action">
-              <button class="buy_product">Comprar</button>
-          </div>
-  
-          <button class="add-fav">
-              <img class="img_add_fav" src="https://cdn-icons-png.flaticon.com/512/1077/1077035.png" alt="icon">
-          </button>
-  
-    </div>
-
-    <div class="container_card">
-        
-        <div class="container_img">
-          <img 
-          src="https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
-          alt="img"
-          >
-        </div>
-  
-          <div class="container_card_info">
-              <div class="container_card_title">
-                  PRODUCT
-              </div>
-              <div class="contaner_card_pric">
-                  <span>$200</span>
-              </div>
-          </div>
-  
-          <div class="container_card_ran">
-              <span class="ranquin">Ranquin (1231)</span>
-          </div>
-  
-          <div class="contaner_card_action">
-              <button class="buy_product">Comprar</button>
-          </div>
-  
-          <button class="add-fav">
-              <img class="img_add_fav" src="https://cdn-icons-png.flaticon.com/512/1077/1077035.png" alt="icon">
-          </button>
-  
-    </div>
-
-    <div class="container_card">
-        
-        <div class="container_img">
-          <img 
-          src="https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
-          alt="img"
-          >
-        </div>
-  
-          <div class="container_card_info">
-              <div class="container_card_title">
-                  PRODUCT
-              </div>
-              <div class="contaner_card_pric">
-                  <span>$200</span>
-              </div>
-          </div>
-  
-          <div class="container_card_ran">
-              <span class="ranquin">Ranquin (1231)</span>
-          </div>
-  
-          <div class="contaner_card_action">
-              <button class="buy_product">Comprar</button>
-          </div>
-  
-          <button class="add-fav">
-              <img class="img_add_fav" src="https://cdn-icons-png.flaticon.com/512/1077/1077035.png" alt="icon">
-          </button>
-  
-    </div>
- 
 </div>
 
 <div class="contaner_btn">     
