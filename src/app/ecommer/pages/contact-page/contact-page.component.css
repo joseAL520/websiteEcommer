@@ -2,16 +2,15 @@
     color: #1E201E;
 }
 .container{
-    background-color: rgb(235 235 235);
-    margin: 20px 40px;
+    margin: 10px 40px;
     border-radius: 5px;
-    padding: 20px;
+    padding: 10px;
 }
 
 .container_contac{
     display: grid;
     grid-template-columns: 1fr 1fr;
-    padding: 20px 40px;
+    padding: 0px 40px 20px 40px;
     gap:20px;
 }
 
@@ -19,21 +18,42 @@
 .container_inf{
     padding: 20px 15px;
     display: flex;
+    border-radius: 5px;
     flex-direction: column;
     flex-wrap: nowrap;
     justify-content: center;
-    
-    border-radius: 5px;
+    align-items: flex-start;
 }
 
 .container_info{
+    display: flex;
     margin: 20px 0px;
+    align-items: center;
+    justify-content: space-evenly;
 }
 
+.content_img{
+    width: 80px;
+    height: 80px;
+    background-color: #b9b9b981;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container_info  img{
+    width: 50px;
+    height: 50px;
+}
+
+.container_info span{
+    margin-left: 30px;
+}
 .container_email_form{
     border-radius: 5px;
     background-color: #ECDFCC;
-    padding: 20px 15px;
+    padding: 0px 20px;
 }
 
 .content_form {
@@ -101,6 +121,8 @@ button{
     cursor: pointer;
     background-color: #1E201E;
     color: white;
+
+    margin-bottom: 10px;
 }
 
 button:active{
