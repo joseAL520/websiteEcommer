@@ -1,1 +1,38 @@
-<p>login-page works!</p>
+
+<div class="container">
+
+    <div class="content_login">
+        <div class="content_img">
+            <img 
+            src="https://images.unsplash.com/photo-1539278383962-a7774385fa02?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+            class="img_login"
+            alt="img"
+            >
+        </div>
+    
+        <div class="content_login_form" >
+            <img class="img_logo" src="https://cdn-icons-png.flaticon.com/512/63/63966.png" alt="logo">
+            <form class="login_form" [formGroup]="myForm" (ngSubmit)="onSave()" >
+                <label class="label_welcome">Bienvenido a вента</label>
+                <div class="input_box">
+                    <input type="text"  placeholder="Correo" formControlName="email" >
+                    <img src="https://cdn-icons-png.flaticon.com/512/17041/17041169.png" alt="img User">
+                    <span class="containr-form text-validator" *ngIf="isValidField('email')">
+                        {{ getFieldError('email') }}
+                    </span>
+                </div>
+                <div class="input_box">
+                    <input type="password" placeholder="Contraseña" formControlName="password" >
+                    <img src="https://cdn-icons-png.flaticon.com/512/3416/3416040.png" alt="img password">
+                    <span class="containr-form text-validator" *ngIf="isValidField('password')">
+                        {{ getFieldError('password') }}
+                    </span>
+                </div>
+                <button type="submit" class="btn_submit">Login</button>
+            </form>
+            <button class="btn-register" (click)="registrer()">Registrarse</button>
+        </div>
+    </div>    
+</div>
+
+<!-- src="https://images.unsplash.com/photo-1539278383962-a7774385fa02?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"  -->
