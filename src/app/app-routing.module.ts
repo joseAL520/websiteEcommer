@@ -13,6 +13,10 @@ const routes: Routes = [
     loadChildren:() => import('./ecommer/ecommer.module').then(m => m.EcommerModule)
   },
   {
+    path:'dash',
+    loadChildren:() => import('./dashboard/dashboard.module').then(m => m.DashboardModule)
+  },
+  {
     // por si no se encuentra la direccion
     path:'404',
     component: Error404PageComponent
