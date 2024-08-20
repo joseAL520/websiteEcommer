@@ -54,3 +54,11 @@
     display: flex;
     gap: 20px;
 }
+
+
+.login_User{
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
