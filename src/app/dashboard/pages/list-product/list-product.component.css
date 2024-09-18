@@ -1,0 +1,140 @@
+*{
+    color: black;
+}
+.container{
+    margin: 20px 40px;
+    background-color: var(--colorTerc);
+    border-radius: 5px;
+    color: black;
+}
+
+input{
+
+    margin: 10px;
+    padding: 5px;
+    border: none;
+    background-color: rgba(233, 232, 232, 0.911);
+    border-radius: 10px;
+    color: black;
+
+}
+
+table{
+    background-color:#ffffff;
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+  }
+  
+th, td{
+    padding: 7px;
+}
+  
+thead{
+    background-color: var(--colorTerc);
+    color: white;
+    border-bottom: solid 5px #6b778549;
+}
+
+
+tr:nth-child(even){
+    background-color: var(--colorCuart); 
+    /* background-color: #00acac48; */
+     /* #00acac */
+}
+
+  
+.container-btn{
+    display: flex;
+    justify-content: space-around;
+}
+  
+.control-btn{
+    margin: 5px;
+    border-radius: 5px;
+    background: #348fe2;
+    color: white;
+    border: 0;
+    cursor: pointer;
+}
+.control-btn img{
+    width: 30px;
+    height: 30px;
+}
+
+.control-btn .control-rotate{
+    transform: rotate(180deg);
+}
+
+.control-btn:hover {
+    background: #1b5188;
+    border: 0px;
+}
+
+/* botonoes de criud */
+
+
+.btn-danger{
+    padding: 5px;
+    background-color:#FF5B57;
+    border: 0px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.btn-danger:hover {
+    background-color: #772c2c;
+}
+
+
+.btn-update{
+    padding: 5px;
+    background-color: #348FE2;
+    border: 0px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.btn-update:hover {
+    background-color: #233d5f;
+}
+
+/*  modal btn-info */
+.btn-info{
+    padding: 5px;
+    border: 0px;
+    border-radius: 3px;
+    background-color: #c9c9c9;
+    cursor: pointer;
+}
+
+.btn-info:hover{
+    background-color: #888888;
+}
+
+#btn-info-check{
+    display: none;
+}
+
+img{
+    object-fit: cover;
+}
+
+
+@media (max-width:650px){
+  
+    th.control-table-marca,
+    th.control-table-provedor,
+    th.control-table-categoria,
+    th.control-table-cantidad{
+        display: none;
+    }
+
+    .colum_provedor,
+    .colum_nombreProduct,
+    .colum_cant,
+    .colum_marca{
+        display: none;
+    }
+
+}

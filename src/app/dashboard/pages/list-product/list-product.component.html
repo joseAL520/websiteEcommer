@@ -1,1 +1,84 @@
-<p>list-product works!</p>
+<div class="container">
+
+    <form [formGroup]="myFom"  (keyup)="searchProduct()"  >
+        <input type="text" class="search-user" placeholder="Buscar usuario por nombre" formControlName="nameBuscador">
+    </form>
+    
+    <table >
+        <thead>
+            <tr>
+                <th class="control-table control-table-number" >#</th>
+                <th class="control-table control-table-nombre " >Nombre</th>
+                <th class="control-table control-table-categoria" >Categoria</th>
+                <th class="control-table control-table-cantidad" >Cantidad</th>
+                <th class="control-table control-table-price" >Precio</th>
+                <th></th>
+                <th></th>
+                <th></th>
+
+              
+            </tr>
+        </thead>
+
+        <tr *ngFor="let product of productList.slice(currentIndex,currentIndex + pageSize); let i = index" >
+            <td class="colum_index" >{{ currentIndex  + i + 1 }}</td>
+            <td class="colum_nombre" >{{ product.nombre }}</td>
+            <td class="colum_nombreProduct" >{{ product.category}}</td>
+            <td class="colum_cant" >{{ product.cantidad }}</td>
+            <td class="colum_marca" >{{ product.price }}</td>
+            <td>
+                <button 
+                    class="btn-danger"
+                    (click)="onDeleterUser(product.id!)"
+                > 
+                    <img 
+                        src="https://cdn-icons-png.flaticon.com/512/4914/4914888.png" 
+                        width="15px"
+                        height="15px"
+                        alt="icon"> 
+                </button>
+            </td>  
+            <td>
+                <button 
+                    class="btn-update" 
+                    (click)="updateProductById( product)"
+                > 
+                    <img 
+                        src="https://cdn-icons-png.flaticon.com/512/2830/2830022.png" 
+                        width="15px"
+                        height="15px"
+                        alt="icon">
+                </button>
+            </td>   
+            <td>
+                <button 
+                    class="btn-info" 
+                    (click)="openModalInfo(product)"
+                > 
+                    <img 
+                        src="https://cdn-icons-png.flaticon.com/512/32/32175.png" 
+                        width="15px"
+                        height="15px"
+                        alt="icon">
+                </button>
+            </td>    
+        </tr>
+    </table> 
+    <hr>
+    <div class="container-btn">
+        <button 
+            class="control-btn"
+            (click)="previous()"
+            [disabled]="currentIndex === 0"
+        >
+           <img class="control-rotate" src="https://cdn-icons-png.flaticon.com/512/545/545682.png" alt="icon">
+        </button>
+        <button 
+            class="control-btn"
+            (click)="next()"
+            [disabled]="currentIndex + pageSize >= productList.length"
+        >
+            <img src="https://cdn-icons-png.flaticon.com/512/545/545682.png" alt="icon">
+        </button>
+    </div>
+</div>
