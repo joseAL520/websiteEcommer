@@ -1,12 +1,12 @@
 export interface Products {
-    id:          number;
+    id?:          number;
     title:       string;
     price:       number;
     description: string;
     category:    Category;
     image:       string;
-    rating:      Rating;
-    count:       number;
+    rating?:      Rating;
+    count?:       number;
 }
 
 export enum Category {

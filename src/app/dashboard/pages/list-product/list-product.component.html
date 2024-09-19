@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container"  *ngIf="productList.length > 0; else noData">
 
     <form [formGroup]="myFom"  (keyup)="searchProduct()"  >
         <input type="text" class="search-user" placeholder="Buscar usuario por nombre" formControlName="nameBuscador">
@@ -10,7 +10,6 @@
                 <th class="control-table control-table-number" >#</th>
                 <th class="control-table control-table-nombre " >Nombre</th>
                 <th class="control-table control-table-categoria" >Categoria</th>
-                <th class="control-table control-table-cantidad" >Cantidad</th>
                 <th class="control-table control-table-price" >Precio</th>
                 <th></th>
                 <th></th>
@@ -22,10 +21,9 @@
 
         <tr *ngFor="let product of productList.slice(currentIndex,currentIndex + pageSize); let i = index" >
             <td class="colum_index" >{{ currentIndex  + i + 1 }}</td>
-            <td class="colum_nombre" >{{ product.nombre }}</td>
+            <td class="colum_nombre" >{{ product.title }}</td>
             <td class="colum_nombreProduct" >{{ product.category}}</td>
-            <td class="colum_cant" >{{ product.cantidad }}</td>
-            <td class="colum_marca" >{{ product.price }}</td>
+            <td class="colum_marca" >{{ product.price | currency }}</td>
             <td>
                 <button 
                     class="btn-danger"
@@ -41,7 +39,8 @@
             <td>
                 <button 
                     class="btn-update" 
-                    (click)="updateProductById( product)"
+                    [routerLink]="['/dash/edit', product.id]"
+                    
                 > 
                     <img 
                         src="https://cdn-icons-png.flaticon.com/512/2830/2830022.png" 
@@ -82,3 +81,8 @@
         </button>
     </div>
 </div>
+
+
+<ng-template #noData>
+    <p>No products available.</p>
+</ng-template>

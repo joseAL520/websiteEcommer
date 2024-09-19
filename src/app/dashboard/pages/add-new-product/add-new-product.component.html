@@ -1,5 +1,8 @@
 <div class="container">
-    <h1 class="title_primary">formulario</h1>
+        <h1 class="title_primary">
+            {{ currientProduct.id? 'Editar' : 'Agregar' }}
+          </h1>
+
     <div class="formContainers">
 
         
@@ -41,9 +44,9 @@
                 </div>
     
                 <div class="img_form">
-                    <input type="text"  placeholder="Url ImG" formControlName="img">
-                    <span class="containr-form text-validator" *ngIf="isValidField('img')">
-                        {{ getFieldError('img') }}
+                    <input type="text"  placeholder="Url ImG" formControlName="image">
+                    <span class="containr-form text-validator" *ngIf="isValidField('image')">
+                        {{ getFieldError('image') }}
                     </span>
                 </div>
 
@@ -54,7 +57,7 @@
                     </span>
                 </div>
                 
-                <button (click)="onSubmit()" >Agregar</button>
+                <button type="submit" >Agregar</button>
             </section>
         </form> 
 

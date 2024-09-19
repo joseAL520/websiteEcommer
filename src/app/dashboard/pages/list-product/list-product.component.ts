@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, ValueChangeEvent } from '@angular/forms';
+import { ProductServiceService } from '../../services/product-service.service';
+import { map, tap } from 'rxjs';
+import { Products } from '../../interfaces/product.interfaces';
 
 
 @Component({
@@ -9,132 +12,46 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 })
 export class ListProductComponent implements OnInit{
 
-  public productTem = [{
-    id:1,
-    nombre:'pan',
-    cantidad:2,
-    price:12312,
-    category:'men cloting',
-  },
-  {
-    id:2,
-    nombre:'as',
-    cantidad:2,
-    price:12312,
-    category:'men cloting',
-  },
-  {
-    id:3,
-    nombre:'cas',
-    cantidad:2,
-    price:12312,
-    category:'men cloting',
-  },
-  {
-    id:4,
-    nombre:'lan',
-    cantidad:2,
-    price:12312,
-    category:'men cloting',
-  },
-  {
-    id:5,
-    nombre:'ras',
-    cantidad:2,
-    price:12312,
-    category:'men cloting',
-  },
-  {
-    id:6,
-    nombre:'ddew',
-    cantidad:2,
-    price:12312,
-    category:'men cloting',
-  },
-  {
-    id:7,
-    nombre:'p112an',
-    cantidad:2,
-    price:12312,
-    category:'men cloting',
-  },
-  {
-    id:8,
-    nombre:'padadan',
-    cantidad:2,
-    price:12312,
-    category:'men cloting',
-  },
-  {
-    id:9,
-    nombre:'paasdasdn',
-    cantidad:2,
-    price:12312,
-    category:'men cloting',
-  },
-  {
-    id:10,
-    nombre:'paaaan',
-    cantidad:2,
-    price:12312,
-    category:'men cloting',
-  },
-  {
-    id:11,
-    nombre:'p11123an',
-    cantidad:2,
-    price:12312,
-    category:'men cloting',
-  },
-  {
-    id:12,
-    nombre:'pg14341an',
-    cantidad:2,
-    price:12312,
-    category:'men cloting',
-  }]
-
   public myFom: FormGroup;
-
-  public productList = [{
-    id: 0,
-    nombre: '',
-    cantidad: 0,
-    price: 0,
-    category: '',
-  }];
+  public productList: Products[] = []; 
   public currentIndex= 0;
   public pageSize = 10;
 
 
   constructor(
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private serviceProduct: ProductServiceService,
+    private cdr: ChangeDetectorRef
   ){
     this.myFom = this.fb.group({ nameBuscador:[''] })
   }
 
-
-  ngOnInit(): void {
-     this.getProduct();
+  ngOnInit() {
+    this.getProduct();
   }
 
-
-  getProduct(){
-    // sort() ayuda arganizarlo alfabeticamente
-    this.productList =  this.productTem.sort((a, b) => a.nombre.localeCompare(b.nombre));
+  getProduct() {
+    this.serviceProduct.getProducts().subscribe(data => {
+      this.productList = data;
+      this.productList.sort((a,b)=> a.title.localeCompare(b.title))
+      this.cdr.detectChanges(); // Fuerza la detección de cambios
+    });
   }
 
   searchProduct(){
     const refProduct = this.myFom.value.nameBuscador;
      return this.productList.filter(value => {
-          if(refProduct === value.nombre){
+          if(refProduct === value.title){
                 this.productList = [{
-                id: value.id,
-                nombre: value.nombre,
-                cantidad: value.cantidad,
-                price: value.price,
-                category: value.category,
-              }]
+                  id: value.id,
+                  title: value.title,
+                  price: value.price,
+                  category: value.category,
+                  description: '',
+                  image: '',
+                  rating: undefined,
+                  count: 0
+                }]
           }
           
           if(refProduct === ''){
@@ -145,11 +62,9 @@ export class ListProductComponent implements OnInit{
   }
 
   onDeleterUser(id:number) {
-      console.log(id)
+      this.serviceProduct.deleteProduct(id).subscribe(() => this.getProduct() )
   }
-  updateProductById(product: any) {
-    console.log(product)
-  }
+  
   openModalInfo(product: any) {
     console.log('modal',product)
   }
@@ -166,10 +81,6 @@ export class ListProductComponent implements OnInit{
     }
     this.productList;
   }
-
-
-
-  
 
 
 }
