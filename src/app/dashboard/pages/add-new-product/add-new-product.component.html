@@ -51,7 +51,7 @@
                 </div>
 
                 <div class="description_form">
-                    <textarea placeholder="descripcion" formControlName="description"></textarea>
+                    <textarea placeholder="descripcion" formControlName="description" maxlength="400"></textarea>
                     <span class="containr-form text-validator" *ngIf="isValidField('description')">
                         {{ getFieldError('description') }}
                     </span>

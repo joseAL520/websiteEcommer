@@ -86,3 +86,5 @@
 <ng-template #noData>
     <p>No products available.</p>
 </ng-template>
+
+<component-card *ngIf="isModalOpen" (closeModal)="closeModalInfo()" [infoCard]="productInf"></component-card>

@@ -1,0 +1,119 @@
+/* modal.component.css */
+*{
+    color: black;
+}
+.container-modal {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.486);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+  }
+  
+  .content-modal {
+    width: 100%;
+    
+    max-width: 560px;
+    padding: 20px;
+    background-color: white;
+    border-radius: 4px;
+    color: black;
+  }
+  
+  .content-modal h2 {
+    margin-bottom: 15px;
+  }
+
+  .conten-info{
+    background-color: #5f5d5d8a;
+    padding: 10px;
+    border-radius: 5px;
+  }
+
+  .conten-info div{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 10px;
+    grid-auto-rows: minmax(50px, auto);
+    align-items: center;
+    padding: 5px;
+    border-radius: 5px;
+   
+  }
+
+ 
+.conten{
+  background-color:#f8f8f8c9;
+}
+
+.conte8{
+  grid-column-start: span 2;
+} 
+
+.conte8 img{
+    grid-column-start: span 2;
+    width: 100%;
+    height: 200px;
+    object-fit: contain;
+}
+
+.conte9{
+    grid-column-start: span 2;
+}
+.conte9 textarea{
+    grid-column-start: span 2;
+    width: 99%;
+    height: 100px;
+    resize:none
+
+}
+
+
+.content-modal .btn-cerrar {
+    width: 100%;
+    margin-top: 10px;
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  .content-modal .btn-cerrar label {
+    padding: 7px 7px;
+    background-color: blue;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .line{
+    border: 1px solid black;
+    margin-bottom: 20px;
+  }
+
+
+  @media (max-width:650px) {
+    
+    .content-modal{
+      width: 80%;
+      padding: 10px;
+    }
+
+    .conten-info div{
+      grid-template-columns: repeat(1, 1fr);
+      grid-auto-rows: minmax(18px, auto);
+      align-items: center;
+      padding: 5px;
+      border-radius: 5px;
+    }
+
+
+    .conte1{
+      grid-column-start: span 1;
+    } 
+  
+
+  }

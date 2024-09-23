@@ -16,6 +16,8 @@ export class ListProductComponent implements OnInit{
   public productList: Products[] = []; 
   public currentIndex= 0;
   public pageSize = 10;
+  public productInf: Products[] = [];
+  public isModalOpen = false;
 
 
   constructor(
@@ -65,10 +67,6 @@ export class ListProductComponent implements OnInit{
       this.serviceProduct.deleteProduct(id).subscribe(() => this.getProduct() )
   }
   
-  openModalInfo(product: any) {
-    console.log('modal',product)
-  }
-
   next(){
     this.currentIndex += this.pageSize;
     this.productList;
@@ -83,4 +81,15 @@ export class ListProductComponent implements OnInit{
   }
 
 
+  openModalInfo(product: Products) {
+    if(this.productInf.length > 0){
+        this.productInf.pop();
+    }
+
+    this.productInf.push(product);
+    this.isModalOpen = true;
+  }
+  closeModalInfo() {
+    this.isModalOpen = false;
+  }
 }

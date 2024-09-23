@@ -6,6 +6,7 @@ import { AddNewProductComponent } from './pages/add-new-product/add-new-product.
 import { ProductVisualComponent } from './pages/product-visual/product-visual.component';
 import { ListProductComponent } from './pages/list-product/list-product.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { CardComponent } from './components/card-modal/card.component';
 
 
 @NgModule({
@@ -13,6 +14,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     AddNewProductComponent,
     ProductVisualComponent,
     ListProductComponent,
+    CardComponent,
 
   ],
   imports: [

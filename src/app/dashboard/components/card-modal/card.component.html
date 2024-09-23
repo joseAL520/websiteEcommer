@@ -1,0 +1,60 @@
+<div class="container-modal">
+    <div class="content-modal">
+      <h2>Mas Detalles</h2>
+       <div class="line"></div>
+      <div *ngIf="infoCard.length > 0">
+       <div class="conten-info">
+         <div *ngFor="let item of infoCard">
+   
+           <ng-container *ngIf="item.title">
+             <div class="conten conte2"><strong>Nombre:</strong> {{ item.title }}</div>
+           </ng-container>
+   
+           <ng-container *ngIf="item.price">
+             <div class="conten conte3"><strong>Precio:</strong> {{ item.price }}</div>
+           </ng-container>
+   
+           <ng-container *ngIf="item.category">
+             <div class="conten conte5"><strong>Categoria:</strong> {{ item.category }}</div>
+           </ng-container>
+   
+   
+           <ng-container *ngIf="item.count">
+             <div class="conten conte7"><strong>Cantidad:</strong> {{ item.count }}</div>
+           </ng-container>
+   
+           <ng-container *ngIf="item.image">
+                <div class="conten conte8">
+                     <img [src]='item.image' alt="img-product" >
+                </div>
+           </ng-container>
+   
+           <ng-container *ngIf="item.description">
+                <div class="conten conte9" >
+                    <textarea disabled > {{ item.description }}  </textarea>
+                </div>
+           </ng-container>
+ 
+
+   
+           <!-- <ng-container *ngIf="item.fechaCreation">
+             <div class="conten conte10" ><strong>Fecha de Creacion:</strong> {{ item.fechaCreation | date }}</div>
+           </ng-container>
+           
+           <ng-container *ngIf="item.fechaCreation">
+             <div class="conten conte10-5" ><strong>Fecha de Actualizacion:</strong> {{ (item.fechaUpdate | date ) || 'Nan' }}</div>
+           </ng-container> -->
+
+   
+         </div>
+       </div>
+       
+ 
+     </div>
+ 
+      <div class="btn-cerrar">
+        <label (click)="close()">Cerrar</label>
+      </div>
+      
+    </div>
+  </div>
