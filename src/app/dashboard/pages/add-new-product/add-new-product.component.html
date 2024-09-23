@@ -1,0 +1,70 @@
+<div class="container">
+        <h1 class="title_primary">
+            {{ currientProduct.id? 'Editar' : 'Agregar' }}
+          </h1>
+
+    <div class="formContainers">
+
+        
+        <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+            <section class="formContainers_form">
+
+                <div class="title_form">
+                    <input type="text" placeholder="nombre" formControlName="title">
+                    <br>
+                    <span class="containr-form text-validator" *ngIf="isValidField('title')">
+                        {{ getFieldError('title') }}
+                    </span>
+                </div>
+
+                <div class="price_form">
+                    <label>Precio: </label>
+                    <input type="number" placeholder="Precio"   formControlName="price" >
+                    <span class="containr-form text-validator" *ngIf="isValidField('price')">
+                        {{ getFieldError('price') }}
+                    </span>
+                </div>
+    
+                <div class="category_product">
+                    <label for="">Categoria: </label>
+                    <select formControlName="category" >
+                        <option *ngFor="let item of category"  [value]="item.id" >{{item.name}} </option>
+                    </select>
+                    <span class="containr-form text-validator" *ngIf="isValidField('category')">
+                        {{ getFieldError('category') }}
+                    </span>
+                </div>
+    
+                <div class="count_form">
+                    <label>Cantidad: </label>
+                    <input type="number" formControlName="count">
+                    <span class="containr-form text-validator" *ngIf="isValidField('count')">
+                        {{ getFieldError('count') }}
+                    </span>
+                </div>
+    
+                <div class="img_form">
+                    <input type="text"  placeholder="Url ImG" formControlName="image">
+                    <span class="containr-form text-validator" *ngIf="isValidField('image')">
+                        {{ getFieldError('image') }}
+                    </span>
+                </div>
+
+                <div class="description_form">
+                    <textarea placeholder="descripcion" formControlName="description" maxlength="400"></textarea>
+                    <span class="containr-form text-validator" *ngIf="isValidField('description')">
+                        {{ getFieldError('description') }}
+                    </span>
+                </div>
+                
+                <button type="submit" >Agregar</button>
+            </section>
+        </form> 
+
+        <section class="formContainers_visualPhoto">
+            
+            <img *ngIf="imagePreview" [src]="imagePreview" alt="imagen del Producto">
+        </section>
+
+    </div>
+</div>
