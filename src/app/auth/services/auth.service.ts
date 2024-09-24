@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { User } from '../interfaces/user.interfaces';
-import { catchError, Observable, tap, throwError } from 'rxjs';
+import { catchError, map, Observable, of, tap, throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -31,15 +31,46 @@ export class AuthService {
       'Authorization': this.authorization
     })
     const url = `${this.urlBase}?email=eq.${email}&password=eq.${password}`;
-
     return this.http.get<User>(url,{headers}).pipe(
       tap( user => this.user = user),
-      tap( user => localStorage.setItem('token','a3b12139245a59775c0266f744e18155')),
-      
+      tap( user => localStorage.setItem('user',JSON.stringify(user))),
     );
   }
 
-  
+
+  checkAuthentication():Observable<boolean> {
+    if(!localStorage.getItem('user') ) return of(false)
+
+    const headers = new HttpHeaders({
+      'apikey': this.apikey,
+      'Authorization': this.authorization
+    })
+    let user: any 
+    let url = ''
+    const userString = localStorage.getItem('user');
+    if (userString) {
+      user = JSON.parse(userString);
+ 
+      url = `${this.urlBase}?email=eq.${user[0].email}&password=eq.${user[0].password}`;
+    } 
+   return this.http.get<User>(url,{headers})
+      .pipe(
+        tap(user => {
+          this.user = user
+        }),
+        map(user => !!user),
+        
+        catchError( err => of(false))
+    )
+    
+  }
+ 
+
+  getUserRole():Observable<string> {
+    const currentUser = Array.isArray(this.user) ? this.user[0] : this.user;
+    const rol = currentUser.role_name;
+    return of(rol);
+  }
 
   onLout(){
     this.user = undefined;
