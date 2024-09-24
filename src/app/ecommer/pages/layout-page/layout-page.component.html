@@ -17,9 +17,12 @@
 
     <div class="containe_option">
         <section>
-            <button class="login_User" (click)="loginUser()">Login</button>
+            <button class="login_User" (click)="loginUser()" *ngIf="!user" >Login</button>
+            <span *ngIf="userEmail">{{userEmail}}</span>
+            <button class="login_cerrar" (click)="onlogout()" *ngIf="user">cerrar</button>
+
         </section>
-        <section>favoritos</section>
+        <section *ngIf="!user" >favoritos</section>
     </div>
 
 </div>
