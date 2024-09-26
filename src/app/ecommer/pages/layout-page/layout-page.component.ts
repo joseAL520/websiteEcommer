@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, UrlSegment } from '@angular/router';
+import { Router } from '@angular/router';
 import { AuthService } from '../../../auth/services/auth.service';
 import { User } from '../../../auth/interfaces/user.interfaces';
 
@@ -9,6 +9,7 @@ import { User } from '../../../auth/interfaces/user.interfaces';
   styleUrl: './layout-page.component.css'
 })
 export class LayoutPageComponent implements OnInit {
+
 
   constructor(
     private router:Router,
@@ -22,7 +23,6 @@ export class LayoutPageComponent implements OnInit {
     {label:'Inicio',icon:'label',url:'./eco'},
     {label:'Nosotros',icon:'label',url:'./about'},
     {label:'Contacto',icon:'label',url:'./contact'},
-    {label:'Panel',icon:'label',url: '/dash'},
   ]
 
 
@@ -41,10 +41,14 @@ export class LayoutPageComponent implements OnInit {
     this.authServices.onLout();
   }
 
+  goDash() {
+    this.router.navigate(['/dash']);
+  }
+
   ngOnInit(): void {
       this.authServices.checkAuthentication().subscribe()
   }
-  
+
 }
 
 

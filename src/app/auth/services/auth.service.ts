@@ -37,6 +37,17 @@ export class AuthService {
     );
   }
 
+  register(user:User){
+    const headers = new HttpHeaders({
+      'apikey': this.apikey,
+      'Authorization': this.authorization
+    })
+    
+   const valueUser = user
+    return this.http.post<User>(this.urlBase,user,{headers}).pipe(
+      tap( user => localStorage.setItem('user',JSON.stringify( [valueUser]))),
+    );
+  }
 
   checkAuthentication():Observable<boolean> {
     if(!localStorage.getItem('user') ) return of(false)
