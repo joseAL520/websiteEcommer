@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
+import { ValidatorService } from '../../services/validator.service';
+import { User } from '../../interfaces/user.interfaces';
 
 @Component({
   selector: 'app-register-page',
@@ -14,51 +17,48 @@ export class RegisterPageComponent {
 
   constructor(
     private fb: FormBuilder,
-    private router: Router
+    private router: Router,
+    private authService:AuthService,
+    private validatorService:ValidatorService
   ) {
     
     this.myForm = this.fb.group({
-      email:['',[Validators.required, Validators.email]],
-      password:['',[Validators.required]],
-      password2:['',[Validators.required]],
+      email:['',[Validators.required, this.validatorService.emailFormatValidator() ]],
+      password:['',[Validators.required, Validators.minLength(8)]],
+      password2:['',[Validators.required,]],
+      role_name: ['']
+    },{
+      validators:[
+        this.validatorService.ifFieldOneEqualFieldTwo('password','password2'),
+
+      ]
     });
 
   }
 
-  isValidField( field:string, ){
-    return this.myForm.controls[field].errors 
-      &&  this.myForm.controls[field].touched;
+
+  get currientUser(): User {
+    return this.myForm.value as User;
   }
 
+  isValidField( field: string ) {
+    return this.validatorService.isValidField( this.myForm , field);
+}
+
   getFieldError(field:string): string| null{
-    if( !this.myForm.controls[field]) return null;
-
-    const errors = this.myForm.controls[field].errors || {};
-
-    for( const key of Object.keys(errors) ){
-      switch(key){
-        case 'required':
-          return 'este campo es requerido';
-        case 'email':
-           return `el formato de correo no corresponde`;
-      }
-    }
-
-    return '';
+    return this.validatorService.getFieldError(this.myForm, field);
   }
      
   onSave() {
     if(this.myForm.valid){
-      return this.router.navigate(['/ecommer/eco']);
+      return this.authService.register(this.currientUser).subscribe( () =>
+        this.router.navigate(['/ecommer/eco'])
+      )
     }
 
     return 
   }
 
-  registrer() {
-    this.router.navigate(['/auth/new-account']);
-  }
-
-
+  
 
 }

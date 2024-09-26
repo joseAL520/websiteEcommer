@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { Error404PageComponent } from './shared/pages/error404-page/error404-page.component';
+import { AuthGuardService } from './auth/guards/auth.guard';
 
 const routes: Routes = [
 
@@ -10,11 +11,15 @@ const routes: Routes = [
   },
   {
     path:'ecommer',
-    loadChildren:() => import('./ecommer/ecommer.module').then(m => m.EcommerModule)
+    loadChildren:() => import('./ecommer/ecommer.module').then(m => m.EcommerModule),
   },
   {
     path:'dash',
-    loadChildren:() => import('./dashboard/dashboard.module').then(m => m.DashboardModule)
+    canMatch:[AuthGuardService],
+    data:{
+      alloweRol: ['admin']
+    },
+    loadChildren:() => import('./dashboard/dashboard.module').then(m => m.DashboardModule),
   },
   {
     // por si no se encuentra la direccion

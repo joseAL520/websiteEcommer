@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
+import { tap } from 'rxjs';
 
 @Component({
   selector: 'app-login-page',
@@ -13,7 +15,8 @@ export class LoginPageComponent {
 
   constructor(
     private fb: FormBuilder,
-    private router: Router
+    private router: Router,
+    private authService: AuthService
   ) {
     
     this.myForm = this.fb.group({
@@ -46,12 +49,25 @@ export class LoginPageComponent {
   }
      
   onSave() {
+    const user = this.myForm.value.email;
+    const password = this.myForm.value.password;
     if(this.myForm.valid){
-      return this.router.navigate(['/ecommer/eco']);
+
+      this.authService.login(user,password).pipe(
+        tap( user => {
+          if (!user || Object.keys(user).length === 0) {
+              alert('las credenciales no Coinciden')
+          }else{
+            this.router.navigate(['/ecommer/eco']);
+          }
+        })
+      ).subscribe()
+     
     }
 
     return 
   }
+
 
   registrer() {
     this.router.navigate(['/auth/new-account']);
