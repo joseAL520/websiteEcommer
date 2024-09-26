@@ -75,3 +75,10 @@
   border-radius: 50%;
   margin: 10px;
 }
+
+.btn-close{
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+}

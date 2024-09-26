@@ -16,13 +16,13 @@
 
 
     <div class="containe_option">
-        <section>
+        
             <button class="login_User" (click)="loginUser()" *ngIf="!user" >Login</button>
             <span *ngIf="user">{{user.email}}</span>
+            <div class="line" *ngIf="user"></div>
             <button class="login_cerrar" (click)="onlogout()" *ngIf="user">cerrar</button>
-
-        </section>
-        <section *ngIf="!user" >favoritos</section>
+        
+        <div *ngIf="!user" >favoritos</div>
     </div>
 
 </div>

@@ -53,6 +53,9 @@
 .containe_option {
     display: flex;
     gap: 20px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
 }
 
 
@@ -63,6 +66,12 @@
     font-size: 16px;
 }
 
+.line{
+    border: 1px solid black;
+    width: 0px;
+    height: 60px;
+}
+  
 
 .login_cerrar{
     background-color: transparent;
