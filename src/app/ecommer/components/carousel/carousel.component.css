@@ -20,37 +20,59 @@
 
 .slide{
     height: 200px;
-    width: 250px;
+    width: 200px;
     display: flex;
     padding-right: 60px;
     perspective: 100px;
-    
+    background-color: white;
+    margin-left: 10px;
+    border-radius: 10px;
 }
 
 img{
-    width: 300px;
+    width: 200px;
     transition: 1s;
     border-radius: 5px;
-   object-fit: cover;
+   object-fit: contain;
+   align-items: center;
 }
 
 .proyect_hover{
     position: absolute;
-    background-color: rgba(0, 0, 0, 0.37);
+    background-color: rgba(0, 0, 0, 0.534);
     top: 0;
     left: 0;
-    width: 300px;
+    width: 100%;
     height: 100%;
     border-radius: 5px;
     cursor: pointer;
     opacity: 0;
     transition: .5s;
     border: none;
+
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+
 }
 
 .proyect_hover:hover{
     opacity: 1;
 }
+
+.btn_more{
+    width: 70px;
+    height: 50px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    margin: 15px;
+    background-color: black;
+}
+
 
 
 @keyframes scroll {
