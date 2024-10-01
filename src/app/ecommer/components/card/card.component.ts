@@ -1,60 +1,46 @@
-import { Component } from '@angular/core';
+import { Component,OnInit } from '@angular/core';
+import { Products } from '../../../dashboard/interfaces/product.interfaces';
+import { ProductServiceService } from '../../../dashboard/services/product-service.service';
 
-interface Product {
-  id: number;
-  image: string;
-  title: string;
-  price: number;
-  rank: number;
-  selected: boolean;
-}
 
 @Component({
   selector: 'app-card',
   templateUrl: './card.component.html',
   styleUrl: './card.component.css'
 })
-export class CardComponent {
-
-  products: Product[] = [
-    {
-      id: 1,
-      image: 'https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg',
-      title: 'PRODUCT',
-      price: 200,
-      rank: 1.2,
-      selected: false
-    },
-    {
-      id: 2,
-      image: 'https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg',
-      title: 'PRODUCT 2',
-      price: 300,
-      rank: 4.5,
-      selected: false
-    },
+export class CardComponent implements OnInit{
  
-  ];
+  public products:Products[] = [];
+  public productSelect: any[] = [];
+  public currentProducts: Products[] = [];
+  public currentPage: number = 1;
+  public productsPerPage: number = 8;
+  public totalPages: number = 0;
   
- public productSelect: any[] = [];
+  constructor(
+    private productService: ProductServiceService
+  ){}
   
-  onToggleSelect(product:Product) {
-    product.selected = !product.selected;
-    this.updateToggleSelect(product)
-  }
-
-  updateToggleSelect(product:Product){
-      if(product.selected){
-          this.productSelect.push(product);
-      }else {
-        this.productSelect = this.productSelect.filter(p => p.id !== product.id);
+  onToggleSelect(product:Products) {
+    if (!product.selected) {
+      product.selected = true; 
+      if (!this.productSelect.some(p => p.id === product.id)) {
+        this.productSelect.push(product); 
       }
-      console.log(this.productSelect);
+    } else {
+      product.selected = false;
+      this.productSelect = this.productSelect.filter(p => p.id !== product.id);
+    }
+    this.updateSelector(product);
   }
 
-  
+  updateSelector(product:Products){
+    this.productService.updateProduct(product).subscribe()
+  }
+
 
   getStarRating(rank: number): any {
+
     const fullStars = Math.floor(rank);
     const halfStars = rank % 1 >= 0.5 ? 1 : 0;
     const emptyStars = 5 - fullStars - halfStars;
@@ -65,8 +51,37 @@ export class CardComponent {
     ];
   }
 
-  buyProductSelect(product:Product){
+  buyProductSelect(product:Products){
       console.log('comprar ',product)
+  }
+
+  updateDisplayedProducts() {
+    const start = (this.currentPage - 1) * this.productsPerPage;
+    const end = start + this.productsPerPage;
+    this.currentProducts = this.products.slice(start, end);
+  }
+
+  nextPage() {
+    if (this.currentPage < this.totalPages) {
+      this.currentPage++;
+      this.updateDisplayedProducts();
+    }
+  }
+  
+  previousPage() {
+    if (this.currentPage > 1) {
+      this.currentPage--;
+      this.updateDisplayedProducts();
+    }
+  }
+  
+
+  ngOnInit(): void {
+    this.productService.getProducts().subscribe((value) => {
+      this.products = value;
+      this.totalPages = Math.ceil(this.products.length / this.productsPerPage);
+      this.updateDisplayedProducts();
+    });
   }
     
 }

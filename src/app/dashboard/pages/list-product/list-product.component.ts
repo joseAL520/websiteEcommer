@@ -51,8 +51,9 @@ export class ListProductComponent implements OnInit{
                   category: value.category,
                   description: '',
                   image: '',
-                  rating: undefined,
-                  count: 0
+                  rate: 0,
+                  count: 0,
+                  selected:false
                 }]
           }
           

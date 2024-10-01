@@ -13,10 +13,11 @@
 
 .container_card{
     position: relative;
-    width: 250px;
+    width: 230px;
     background-color: #ecdfcc9c;
     border-radius: 5px;
     padding: 10px;
+    height: 410px;
 }
 
 .container_img {
@@ -134,4 +135,13 @@ img:hover{
 
 .btn-der{
     transform: rotate(180deg);
+}
+
+a{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-content: flex-end;
+    flex-wrap: wrap;
+    align-items: flex-end;
 }

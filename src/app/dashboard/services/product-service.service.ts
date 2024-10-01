@@ -21,7 +21,9 @@ export class ProductServiceService {
       'apikey': this.apikey,
       'Authorization': this.authorization
     })
-    return this.http.get<Products[]>(this.apiUrl,{headers});
+    return this.http.get<Products[]>(this.apiUrl,{headers}).pipe(
+      map(products => products.sort((a, b) => a.title.localeCompare(b.title)))
+    );
   }
 
   getProductByid(id:number):Observable<Products>{
