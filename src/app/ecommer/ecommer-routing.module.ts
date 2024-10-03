@@ -14,7 +14,7 @@ const routes: Routes = [
       {path:'eco',component:EcommerPageComponent},
       {path:'contact',component:ContactPageComponent},
       {path:'about',component:AboutPageComponent},
-      {path:':id',component:ProductPageComponent},
+      {path:'pageProduct/:id',component:ProductPageComponent},
       {path:'**', redirectTo:'eco'},
     ]
   }

@@ -17,9 +17,6 @@ export class CarouselComponent implements OnInit{
   ){}
 
 
-  productPages(arg0: number|undefined) {
-    console.log(arg0)
-  }
 
   
   ngOnInit(): void {

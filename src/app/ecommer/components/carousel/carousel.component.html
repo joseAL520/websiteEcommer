@@ -12,7 +12,7 @@
             <div class="proyect_hover">
                 <div class="contaner-parrafo">
                     <h3>{{item.title}}</h3>
-                    <button class="btn_more" (click)="productPages(item.id)">Ver Mas</button>
+                    <button class="btn_more" [routerLink]="['/ecommer/pageProduct', item.id]">Ver Mas</button>
                 </div>
             </div>
         </div>

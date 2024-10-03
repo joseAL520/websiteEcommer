@@ -137,11 +137,14 @@ img:hover{
     transform: rotate(180deg);
 }
 
-a{
+.container_btn_Mor{
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
-    align-content: flex-end;
-    flex-wrap: wrap;
-    align-items: flex-end;
+    align-items: center;
+}
+.btn-more{
+   background-color: transparent;
+   border: none;
+   cursor: pointer;
 }

@@ -1,1 +1,45 @@
-<p>product-page works!</p>
+
+<div class="container">
+    <div class="contenet">
+        
+        <section class="conten_img">
+            <img [src]="productInfo.image" alt="img">
+        </section>
+
+
+        <section class="cotent_info">
+            <section  class="cotent_info_cont" >
+                <h2>{{productInfo.title}}</h2>
+                <div class="container_card_ran">
+                    <div class="container_star_rank">
+                        @if(!productInfo.rate){
+                            <img src="https://cdn-icons-png.flaticon.com/512/16/16666.png" alt="half star">
+                            <img src="https://cdn-icons-png.flaticon.com/512/16/16666.png" alt="half star">
+                            <img src="https://cdn-icons-png.flaticon.com/512/16/16666.png" alt="half star">
+                            <img src="https://cdn-icons-png.flaticon.com/512/16/16666.png" alt="half star">
+                            <img src="https://cdn-icons-png.flaticon.com/512/16/16666.png" alt="half star">
+                        }
+                        <ng-container *ngFor="let star of getStarRating(productInfo.rate)">
+                            <img *ngIf="star === 'full'" src="https://cdn-icons-png.flaticon.com/512/9715/9715468.png" alt="full star">
+                            <img *ngIf="star === 'half'" src="https://cdn-icons-png.flaticon.com/512/2107/2107737.png" alt="half star">
+                        </ng-container>
+                    </div>
+                </div>
+                <span class="price_title">{{productInfo.price | currency}}</span>
+                <span> <strong>Disponibles:</strong>  {{productInfo.count}}</span>
+                <span> <strong>Categoria:</strong> {{productInfo.category}} </span>
+            </section>
+     
+            <section class="buy_product">
+                <button>Comprar</button>
+            </section>
+        </section>
+
+        <section  class="contenet_descrition">
+            <h3>descripcion</h3>
+            <textarea disabled>{{productInfo.description}}</textarea>
+        </section>
+
+    </div>
+</div>
+
