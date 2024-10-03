@@ -5,6 +5,7 @@ import { ProductPageComponent } from './pages/product-page/product-page.componen
 import { EcommerPageComponent } from './pages/ecommer-page/ecommer-page.component';
 import { ContactPageComponent } from './pages/contact-page/contact-page.component';
 import { AboutPageComponent } from './pages/about-page/about-page.component';
+import { FavoritePageComponent } from './pages/favorite-page/favorite-page.component';
 
 const routes: Routes = [
   {
@@ -15,6 +16,7 @@ const routes: Routes = [
       {path:'contact',component:ContactPageComponent},
       {path:'about',component:AboutPageComponent},
       {path:'pageProduct/:id',component:ProductPageComponent},
+      {path:'likerItem',component:FavoritePageComponent},
       {path:'**', redirectTo:'eco'},
     ]
   }

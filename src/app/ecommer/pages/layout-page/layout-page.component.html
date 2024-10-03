@@ -25,7 +25,7 @@
                <img width="25px" height="20px" src="https://cdn-icons-png.flaticon.com/512/9133/9133967.png" alt="img">
             </button>
         }
-        <button class="btn-fav" *ngIf="user" >
+        <button class="btn-fav" *ngIf="user" [routerLink]="['/ecommer/likerItem']" >
             <img width="25px" height="20px"  src="https://cdn-icons-png.flaticon.com/512/1828/1828884.png" alt="img">
         </button>
         <button class="login_cerrar" (click)="onlogout()" *ngIf="user">

@@ -10,6 +10,7 @@ import { ContactPageComponent } from './pages/contact-page/contact-page.componen
 import { AboutPageComponent } from './pages/about-page/about-page.component';
 import { CardComponent } from './components/card/card.component';
 import { CarouselComponent } from './components/carousel/carousel.component';
+import { FavoritePageComponent } from './pages/favorite-page/favorite-page.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { CarouselComponent } from './components/carousel/carousel.component';
     ContactPageComponent,
     AboutPageComponent,
     CardComponent,
-    CarouselComponent
+    CarouselComponent,
+    FavoritePageComponent
   ],
   imports: [
     CommonModule,

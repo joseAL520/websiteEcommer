@@ -1,0 +1,18 @@
+<div class="container">
+    <div class="conten">
+        <section class="product_conten" *ngFor="let item of favorityList">
+            <img    class="product_img" [src]="item.image" [alt]="item.title">
+            <span   class="product_title">{{item.title | uppercase}}</span>
+            <span   class="product_price">{{item.price |currency}}</span>
+            <input  class="product_cant" type="number" value="{{item.count}}">           
+            <button class="btn_delect"  (click)="deleteSelect(item)">X</button>
+        </section>
+
+        <section class="section_buy">
+            <h1>Total</h1>
+            <span><strong> {{calculationPriceTotal() | currency }} </strong></span>
+            <button>Comprar</button>
+        </section>
+
+    </div>
+</div>
