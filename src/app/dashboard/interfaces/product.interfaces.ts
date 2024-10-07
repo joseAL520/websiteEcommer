@@ -8,6 +8,7 @@ export interface Products {
     rate:        number;
     count?:      number;
     selected:   boolean;
+    cantiSelect?: number;
 }
 
 export enum Category {

@@ -24,11 +24,14 @@ export class CardComponent implements OnInit{
   onToggleSelect(product:Products) {
     if (!product.selected) {
       product.selected = true; 
+      product.cantiSelect = +1;
       if (!this.productSelect.some(p => p.id === product.id)) {
+
         this.productSelect.push(product); 
       }
     } else {
       product.selected = false;
+      product.cantiSelect = 0;
       this.productSelect = this.productSelect.filter(p => p.id !== product.id);
     }
     this.updateSelector(product);

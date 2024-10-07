@@ -25,8 +25,14 @@
                         </ng-container>
                     </div>
                 </div>
-                <span class="price_title">{{productInfo.price | currency}}</span>
-                <span> <strong>Disponibles:</strong>  {{productInfo.count}}</span>
+                <section class="container_prices">
+                    <span class="price_title"> <span class="price_subtitle">precio Base:</span> {{productInfo.price | currency}}</span>
+                    <span class="price_total"> Preco Total: {{calculationPrice(productInfo.price, productInfo.cantiSelect) | currency}}  </span>
+                </section>
+                <section class="container_count">
+                    <span> <strong>Disponibles:</strong>  {{productInfo.count}}</span>
+                    <input class="container_count_input"  type="number" [(ngModel)]="productInfo.cantiSelect" (change)="onChangeCantidad(productInfo)" >
+                </section>
                 <span> <strong>Categoria:</strong> {{productInfo.category}} </span>
             </section>
      

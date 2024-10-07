@@ -10,7 +10,9 @@ import { Products } from '../../../dashboard/interfaces/product.interfaces';
 export class FavoritePageComponent  implements OnInit{
 
 
-  public favorityList: Products[] = []
+  public favorityList: Products[] = [];
+  public arrayPrice: number[] = [];
+  public modal:boolean = false
   constructor(
     private productService: ProductServiceService
   ){}
@@ -20,27 +22,50 @@ export class FavoritePageComponent  implements OnInit{
       map(value => value.filter( value => value.selected === true )),
       map(value =>  this.favorityList = value)
     ).subscribe(
-      () =>  this.calculationPriceTotal()
+      () =>  {
+        this.recalculatePrices();
+      }
     )
   }
 
 
   deleteSelect(product: Products) {
     if(!product) return
-
     product.selected = false;
+    product.cantiSelect = 0;
     this.productService.updateProduct(product).subscribe(
-      () => this.getFavorityProducts()
+      () => {
+        this.getFavorityProducts()
+      }
     )
   }
 
-  calculationPriceTotal(){
-   const total = this.favorityList.reduce((sum,produc) => sum + produc.price,0)
-   return total
+  onChangeCantidad(item: Products) {
+    return this.productService.updateProduct(item).subscribe();
   }
 
-  ngOnInit(): void {
-      this.getFavorityProducts();
+  calculationForPrice(price: number, cant: number | undefined,index:number) {
+    const total = price * (cant??1);
+    this.arrayPrice[index] = total;
+    return total;
   }
+  
+  calculationPriceTotal() {
+    const suma = this.arrayPrice.reduce((acumulador, valorActual) => acumulador + valorActual, 0);
+    return suma;
+  }
+
+  recalculatePrices() {
+    this.arrayPrice = []; // Limpiar la lista de precios antes de recalcular
+    this.favorityList.forEach((product, index) => {
+      const total = this.calculationForPrice(product.price, product.cantiSelect, index);
+    });
+  }
+  
+  ngOnInit(): void {
+    this.getFavorityProducts();
+  }
+
+
 
 }

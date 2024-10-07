@@ -37,7 +37,7 @@
     border-radius: 5px;
     padding: 10px;
     grid-area: img2;
-    height: 200px;
+    height: 205px;
 }
 
 .cotent_info_cont {
@@ -68,8 +68,37 @@
     display: inline-block;
 }
 
+.container_prices{
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    flex-direction: row;
+
+}
 .price_title{
-    font-size: 38px;
+    font-size: 30px;
+}
+
+.price_subtitle{
+    font-size: 20px;
+}
+
+.price_total{
+    font-size: 20px;
+    color: green;
+}
+
+
+.container_count{
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    flex-direction: row;
+}
+
+.container_count_input{
+    width: 40px;
+    height: 25px;
 }
 
 .buy_product {

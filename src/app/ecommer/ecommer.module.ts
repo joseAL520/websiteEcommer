@@ -11,6 +11,7 @@ import { AboutPageComponent } from './pages/about-page/about-page.component';
 import { CardComponent } from './components/card/card.component';
 import { CarouselComponent } from './components/carousel/carousel.component';
 import { FavoritePageComponent } from './pages/favorite-page/favorite-page.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { FavoritePageComponent } from './pages/favorite-page/favorite-page.compo
   ],
   imports: [
     CommonModule,
-    EcommerRoutingModule
+    EcommerRoutingModule,
+    FormsModule
   ]
 })
 export class EcommerModule { }
