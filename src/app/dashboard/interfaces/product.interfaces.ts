@@ -5,8 +5,10 @@ export interface Products {
     description: string;
     category:    Category;
     image:       string;
-    rating?:      Rating;
-    count?:       number;
+    rate:        number;
+    count?:      number;
+    selected:   boolean;
+    cantiSelect?: number;
 }
 
 export enum Category {
@@ -15,9 +17,3 @@ export enum Category {
     MenSClothing = "men's clothing",
     WomenSClothing = "women's clothing",
 }
-
-export interface Rating {
-    rate:  number;
-    count: number;
-}
- 

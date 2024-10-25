@@ -1,0 +1,148 @@
+*{
+    color: black;
+}
+
+.container{
+    margin: 30px;
+}
+
+.contenet{
+    display: grid;
+    grid-template-areas: 
+    "img1 img1  img2 "
+    "img1 img1  img3";
+    gap: 15px;
+    padding: 20px;
+    background-color: var(--colorCuart);
+    border-radius: 3px;
+}
+
+
+.conten_img{
+    background-color: rgb(255, 255, 255);
+    padding: 5px;
+    grid-area: img1;
+}
+.conten_img img{
+    width: 100%;
+    height: 500px;
+    object-fit: contain;
+    
+}
+
+
+.cotent_info{
+    border: 1.5px rgba(124, 124, 124, 0.575) solid;
+    background-color: transparent;
+    border-radius: 5px;
+    padding: 10px;
+    grid-area: img2;
+    height: 205px;
+}
+
+.cotent_info_cont {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    justify-content: center;
+    padding-bottom: 20px;
+    gap: 10px;
+}
+
+.container_card_ran {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    margin-bottom: 10px;
+}
+
+.container_card_ran img{
+    width: 15px;
+    height: 15px;
+    margin: 0 2px;
+}
+
+.container_card_ran img {
+    display: inline-block;
+}
+
+.container_prices{
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    flex-direction: row;
+
+}
+.price_title{
+    font-size: 30px;
+}
+
+.price_subtitle{
+    font-size: 20px;
+}
+
+.price_total{
+    font-size: 20px;
+    color: green;
+}
+
+
+.container_count{
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    flex-direction: row;
+}
+
+.container_count_input{
+    width: 40px;
+    height: 25px;
+}
+
+.buy_product {
+    display: flex;
+    flex-direction: row;
+    /* align-content: center; */
+    justify-content: center;
+}
+
+.buy_product button{
+    width: 100px;
+    height: 30px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.contenet_descrition{
+    background-color: transparent;
+    border-top: 1.5px rgba(124, 124, 124, 0.575) solid;
+    border-bottom: 1.5px rgba(124, 124, 124, 0.575) solid;
+    grid-area: img3;
+    height: 150px;
+    padding: 10px;
+}
+
+
+.contenet_descrition textarea{
+    width: 100%;
+    height: 150px;
+    background-color: transparent;
+    resize: none;
+    border: none;
+    font-size: 15px;
+    padding-top: 10px;
+}
+
+@media (max-width: 720px) {
+    .contenet{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .contenet_descrition{
+        padding: 40px 0px;
+    }
+}

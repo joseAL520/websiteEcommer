@@ -79,3 +79,26 @@ p{
     border-radius: 5px;
     padding: 5px;
 }
+
+@media (max-width: 720px) {
+    .container_footer{
+        height: 100%;
+    }
+
+    .container_inf {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .container_copyright{
+        flex-direction: column;
+    }
+
+    .contaner_solcialRed{
+        border: none;
+        border-top: 2px solid white;
+    }
+}

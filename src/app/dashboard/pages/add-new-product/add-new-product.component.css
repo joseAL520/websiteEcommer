@@ -111,3 +111,24 @@ img{
     border-radius: 3px;
     object-fit: contain;
 }
+
+@media (max-width:720px){
+    .formContainers{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .formContainers_form{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .formContainers_visualPhoto{
+       width: 320px; 
+    }
+
+    .category_product[_ngcontent-ng-c248811724] label[_ngcontent-ng-c248811724] {
+        margin: 0px;
+    }  
+}

@@ -37,6 +37,7 @@ export class AddNewProductComponent implements OnInit {
       count: [0, [Validators.required, Validators.min(1)]],
       image: ['', [Validators.required]],
       description: ['', [Validators.required]],
+      rate: [0]
     });
 
     this.productForm.get('image')?.valueChanges.subscribe(value => {

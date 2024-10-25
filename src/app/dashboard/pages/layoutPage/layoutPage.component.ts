@@ -2,7 +2,6 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { AuthService } from '../../../auth/services/auth.service';
-import { tap } from 'rxjs';
 import { User } from '../../../auth/interfaces/user.interfaces';
 
 @Component({
@@ -13,8 +12,7 @@ import { User } from '../../../auth/interfaces/user.interfaces';
     RouterModule
   ],
   template: `
-    <div class="sliderBar">
-
+<div class="sliderBar" [class.hidden]="isMenuHidden">
     <div class="containerLog">
         <div class="container_logo">
             <img class="container_logo_img" src="https://cdn-icons-png.flaticon.com/512/63/63966.png" alt="logo">
@@ -23,27 +21,28 @@ import { User } from '../../../auth/interfaces/user.interfaces';
     </div>
 
     <div class="nav_cotainer">
-       <div class="container_nav" *ngFor="let item of sideBarItem">
-           <button class="nav_link" [routerLink]="item.url" >{{item.label}}</button>
-       </div>
-   </div>
+        <div class="container_nav" *ngFor="let item of sideBarItem">
+            <button class="nav_link" [routerLink]="item.url">{{item.label}}</button>
+        </div>
+    </div>
 
-      <div class="content_user">
+    <div class="content_user">
         <div class="email_name">
-          <span>{{emailUser}}</span>
+            <span>{{emailUser}}</span>
         </div>
         <div class="line"></div>
         <div class="img_content">
-          <img src="https://reqres.in/img/faces/7-image.jpg" alt="img">
+            <img src="https://reqres.in/img/faces/7-image.jpg" alt="img">
         </div>
-        <button (click)="onLout()" class="btn-close"> Cerrar </button>
-      </div>
+        <button (click)="onLout()" class="btn-close">Cerrar</button>
     </div>
-    
-    <router-outlet></router-outlet>
+  </div>
+  
+  <button class="toggle-button" (click)="toggleMenu()">☰</button>
+<!-- Botón para mostrar/ocultar el menú en pantallas pequeñas -->
+<router-outlet></router-outlet>
 
-    <!-- <button (click)="goIntPage()">Ir al Inicio</button> -->
-  `,
+`,
   styleUrl: './layoutPage.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -58,6 +57,7 @@ export class LayoutPageComponent implements OnInit {
   
   ]
   
+  public isMenuHidden = true;
 
   constructor(
     private router:Router,
@@ -82,6 +82,11 @@ export class LayoutPageComponent implements OnInit {
     const user = Array.isArray(this.user) ? this.user[0] : this.user;
     this.emailUser = user.email;
     return this.emailUser;
+  }
+
+
+  toggleMenu() {
+      this.isMenuHidden = !this.isMenuHidden;
   }
 
   ngOnInit(): void {

@@ -1,0 +1,24 @@
+
+
+<div class="container" *ngIf="favorityList.length > 0">
+    <div class="conten"  >
+        <section class="product_conten" *ngFor="let item of favorityList;let i = index ">
+            <img    class="product_img" [src]="item.image" [alt]="item.title">
+            <span   class="product_title">{{item.title | uppercase}}</span>
+            <span   class="product_price">{{calculationForPrice(item.price,item.cantiSelect,i) | currency}} </span>
+            <input class="product_cant" type="number" [(ngModel)]="item.cantiSelect" (change)="onChangeCantidad(item)">
+            <button class="btn_delect"  (click)="deleteSelect(item)">X</button>
+        </section>
+        <section class="section_buy">
+            <h1>Total</h1>
+            <span><strong> {{calculationPriceTotal() | currency }} </strong></span>
+            <button>Comprar</button>
+        </section>
+    </div>
+</div>
+
+<div  class="container" *ngIf="!favorityList.length">
+    <div class="conten" >
+        No hay productos disponibles
+    </div>
+</div>

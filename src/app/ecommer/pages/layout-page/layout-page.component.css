@@ -6,9 +6,10 @@
     justify-content: space-between;
     align-items: center;
     padding: 0 20px; 
+    z-index: 10; /* Ensure it stays in front */
 }
 
-.nav_cotainer{
+.nav_cotainer, .containe_option {
     display: flex;
     gap: 20px;
 }
@@ -19,18 +20,20 @@
     align-items: center;
 }
 
-.container_logo{
+.container_logo {
     flex-shrink: 0; 
     background-color: white;
     margin: 0px 10px;
     padding: 7px;
     border-radius: 50%;
 }
-.container_logo_img{
+
+.container_logo_img {
     width: 45px;
     height: 45px;
 }
-.title_logo{
+
+.title_logo {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
@@ -58,41 +61,94 @@
     flex-direction: row;
 }
 
-
-.login_User{
+.login_User {
     background-color: transparent;
     border: none;
     cursor: pointer;
     font-size: 16px;
 }
 
-.line{
+.line {
     border: 1px solid black;
     width: 0px;
     height: 60px;
 }
-  
-.btn-panel{
-    background-color: rgba(255, 255, 255, 0.39);
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-   
-}
-.btn-fav{
-    background-color: rgba(255, 255, 255, 0.39);
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
 
+.btn-panel, .btn-fav {
+    background-color: rgba(255, 255, 255, 0.39);
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
 }
-img{
+
+img {
     object-fit: contain;
 }
 
-.login_cerrar{
+.login_cerrar {
     background-color: transparent;
     border: none;
     cursor: pointer;
     font-size: 16px;
+}
+
+.menu-toggle {
+    display: none;
+    font-size: 28px;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .nav_cotainer {
+        display: none;
+        position: absolute;
+        top: 80px;
+        left: 0;
+        width: 100%;
+        background-color: #1E201E;
+        flex-direction: column;
+        gap: 10px;
+        padding: 20px 0;
+        transition: transform 0.3s ease-in-out;
+        transform: translateY(-100%);
+        z-index: 20; 
+    }
+
+    .nav_cotainer.active {
+        display: flex;
+        transform: translateY(0);
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .span_email {
+        font-size: 12px;
+    }
+    .line {
+        display: none;
+    }
+
+    .container_menu {
+        display: flex;
+        justify-content: flex-start;
+    }
+
+    .title_logo {
+        display: none;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .containe_option{
+        gap: 10px;
+        margin-left: 40px;
+    }
+
+ 
 }
