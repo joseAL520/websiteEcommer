@@ -100,3 +100,34 @@
     padding: 3px 10px;
     margin-left: 30px;
 }
+
+
+@media (max-width: 720px) {
+   
+    .container{
+        margin: 10px;
+        border: none;
+    }
+    .content_login{
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        align-content: center;
+        justify-content: center;
+        align-items: center;
+        padding: 100px;
+        margin: 20px;
+        border: 2px solid black;
+        border-radius: 10%;
+    }
+    .content_img{
+        display: none;
+    }   
+    .content_login_form{
+        display: flex;
+        margin: 10px;
+    }
+    .img_login{
+        display: none;
+    }
+}

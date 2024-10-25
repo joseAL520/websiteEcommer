@@ -9,6 +9,7 @@ import { User } from '../../../auth/interfaces/user.interfaces';
   styleUrl: './layout-page.component.css'
 })
 export class LayoutPageComponent implements OnInit {
+  isMenuOpen = false;
 
 
   constructor(
@@ -44,6 +45,9 @@ export class LayoutPageComponent implements OnInit {
   goDash() {
     this.router.navigate(['/dash']);
   }
+  toggleMenu() {
+    this.isMenuOpen = !this.isMenuOpen;
+}
 
   ngOnInit(): void {
       this.authServices.checkAuthentication().subscribe()
