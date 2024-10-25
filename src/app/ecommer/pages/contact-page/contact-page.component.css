@@ -128,3 +128,12 @@ button{
 button:active{
     background-color: #1e201e8f;
 }
+
+
+@media (max-width: 720px) {
+    .container_contac{
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: center;
+    }
+}

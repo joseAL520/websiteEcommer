@@ -1,13 +1,7 @@
-
 <div class="container">
-    
-    <div class="container_card" *ngFor="let item of products">
-        
+    <div class="container_card" *ngFor="let item of currentProducts">
       <div class="container_img">
-        <img 
-        src="https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg" 
-        alt="img"
-        >
+        <img [src]="item.image" alt="img" />
       </div>
 
         <div class="container_card_info">
@@ -15,37 +9,48 @@
                 {{ item.title}}
             </div>
             <div class="contaner_card_pric">
-                <span>{{item.price}}</span>
+                <span>{{item.price | currency}}</span>
             </div>
         </div>
 
         <div class="container_card_ran">
                 <div class="container_star_rank">
-                    <ng-container *ngFor="let star of getStarRating(item.rank)">
+                    @if(!item.rate){
+                        <img src="https://cdn-icons-png.flaticon.com/512/16/16666.png" alt="half star">
+                        <img src="https://cdn-icons-png.flaticon.com/512/16/16666.png" alt="half star">
+                        <img src="https://cdn-icons-png.flaticon.com/512/16/16666.png" alt="half star">
+                        <img src="https://cdn-icons-png.flaticon.com/512/16/16666.png" alt="half star">
+                        <img src="https://cdn-icons-png.flaticon.com/512/16/16666.png" alt="half star">
+                    }
+                    <ng-container *ngFor="let star of getStarRating(item.rate)">
                         <img *ngIf="star === 'full'" src="https://cdn-icons-png.flaticon.com/512/9715/9715468.png" alt="full star">
                         <img *ngIf="star === 'half'" src="https://cdn-icons-png.flaticon.com/512/2107/2107737.png" alt="half star">
                     </ng-container>
                 </div>
-                ({{item.rank}})
+                ({{item.rate}})
            
         </div>
         
-        <div class="contaner_card_action">
+        <!-- <div class="contaner_card_action">
             <button class="buy_product" (click)="buyProductSelect(item)">Comprar</button>
-        </div>
+        </div> -->
         <button class="add-fav" [class.selected]="item.selected" (click)="onToggleSelect(item)">
             <img class="img_add_fav" src="https://cdn-icons-png.flaticon.com/512/1077/1077035.png" alt="icon">
         </button>
 
+        <div class="container_btn_Mor">
+            <button class="btn-more" 
+            [routerLink]="['/ecommer/pageProduct', item.id]"
+             >ver mas</button>
+        </div>
     </div>
-
-</div>
-
+  </div>
+  
 <div class="contaner_btn">     
-    <button class="btn-mod btn-iz"> 
+    <button class="btn-mod btn-iz" (click)="previousPage()" [disabled]="currentPage === 1" > 
         <img src="https://cdn-icons-png.flaticon.com/512/507/507257.png" alt="icon"> 
     </button>
-    <button class="btn-mod btn-der"> 
+    <button class="btn-mod btn-der" (click)="nextPage()" [disabled]="currentPage === totalPages" > 
         <img src="https://cdn-icons-png.flaticon.com/512/507/507257.png" alt="icon"> 
     </button>
 </div>

@@ -99,3 +99,16 @@
     box-shadow: 0px 10px 5px 0px rgba(0,0,0,0.4);
     margin-bottom: 50px;
 }
+
+@media (max-width: 720px) {
+    .container_info{
+        display: flex;
+        flex-direction: column-reverse;
+    }
+    .contaner_info_val img{
+        left: 50px;
+    }
+    .contaner_info_eleg img{
+        left: 50px;
+    }
+}

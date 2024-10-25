@@ -96,3 +96,37 @@ img{
     cursor: pointer;
     font-size: 16px;
 }
+
+.menu-toggle {
+    display: none;
+    font-size: 28px;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .nav_cotainer, .containe_option {
+        display: none; /* Ocultar inicialmente */
+    }
+    .menu-toggle {
+        display: block; /* Mostrar el botón de menú */
+    }
+    .nav_cotainer.active, .containe_option.active {
+        display: flex; /* Mostrar cuando el menú esté activo */
+        width: 100%;
+        background-color: #1E201E;
+    }
+    .span_email{
+        display: none;
+    }
+    .container_menu{
+        display: flex;
+        justify-content: flex-start;
+    }
+    .title_logo{
+        display: none;
+    }
+}

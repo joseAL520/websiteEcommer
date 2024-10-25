@@ -1,6 +1,4 @@
-
 <div class="container_menu">
-
     <div class="containerLog">
         <div class="container_logo">
             <img class="container_logo_img" src="https://cdn-icons-png.flaticon.com/512/63/63966.png" alt="logo">
@@ -8,33 +6,27 @@
         <p class="title_logo">вента</p>
     </div>
 
-   <div class="nav_cotainer">
-       <div class="container_nav" *ngFor="let item of sideBarItem">
-           <button class="nav_link" [routerLink]="item.url" >{{item.label}}</button>
-       </div>
-   </div>
+    <!-- Botón de menú para pantallas pequeñas -->
+    <button class="menu-toggle" (click)="toggleMenu()">&#9776;</button>
 
-
-    <div class="containe_option">
-        
-        <button class="login_User" (click)="loginUser()" *ngIf="!user" >Login</button>
-        <span *ngIf="user">{{user.email}}</span>
-        <div class="line" *ngIf="user"></div>
-        @if (user?.role_name === 'admin') {
-            <button class="btn-panel" (click)="goDash()">
-               <img width="25px" height="20px" src="https://cdn-icons-png.flaticon.com/512/9133/9133967.png" alt="img">
-            </button>
-        }
-        <button class="btn-fav" *ngIf="user" >
-            <img width="25px" height="20px"  src="https://cdn-icons-png.flaticon.com/512/1828/1828884.png" alt="img">
-        </button>
-        <button class="login_cerrar" (click)="onlogout()" *ngIf="user">
-          cerrar
-        </button>
+    <div class="nav_cotainer" [class.active]="isMenuOpen">
+        <div class="container_nav" *ngFor="let item of sideBarItem">
+            <button class="nav_link" [routerLink]="item.url">{{item.label}}</button>
+        </div>
     </div>
 
+    <div class="containe_option" [class.active]="isMenuOpen">
+        <button class="login_User" (click)="loginUser()" *ngIf="!user">Login</button>
+        <span class="span_email" *ngIf="user">{{user.email}}</span>
+        <div class="line" *ngIf="user"></div>
+        <button class="btn-panel" (click)="goDash()" *ngIf="user?.role_name === 'admin'">
+            <img width="25px" height="20px" src="https://cdn-icons-png.flaticon.com/512/9133/9133967.png" alt="img">
+        </button>
+        <button class="btn-fav" *ngIf="user" [routerLink]="['/ecommer/likerItem']">
+            <img width="25px" height="20px" src="https://cdn-icons-png.flaticon.com/512/1828/1828884.png" alt="img">
+        </button>
+        <button class="login_cerrar" (click)="onlogout()" *ngIf="user">Cerrar</button>
+    </div>
 </div>
-
-
 <router-outlet></router-outlet>
 <app-footer></app-footer>
